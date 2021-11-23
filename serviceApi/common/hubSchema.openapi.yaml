@@ -3,8 +3,8 @@ info:
   title: MEF Hub and Notification API
   version: 4.0.0-RC
   description: |-
-    Provides the ability to subscribe to and unsubscribe from API 
-    notifications. In addition, the API supports the ability to send 
+    Provides the ability to subscribe to and unsubscribe from API
+    notifications. In addition, the API supports the ability to send
     notifications to subscribers.
 
     - MEF Developer Guide Reference : MEF_W99 v1.0
@@ -24,7 +24,7 @@ components:
     Notification:
       description: Event is used to describe common information structure used for any notification.
       allOf:
-        - $ref: 'apiSchema.openapi.yaml#/components/schemas/Extensible'
+        - $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/apiSchema.openapi.yaml?raw=true#/components/schemas/Extensible'
         - type: object
           required:
             - eventId
@@ -43,12 +43,12 @@ components:
               format: date-time
             resourcePath:
               description: |-
-                The path identifying the resource object associated with this 
+                The path identifying the resource object associated with this
                 notification
               type: string
               format: uri
-            fieldPath: 
-              type: string 
+            fieldPath:
+              type: string
               description: |-
                 The relative path (from the resource-path) identifying the resource property associated with this notification
 

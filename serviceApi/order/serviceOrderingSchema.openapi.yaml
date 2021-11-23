@@ -19,7 +19,7 @@ info:
 tags:
   - name: ServiceOrderSchema
     description: Common Service Order schema components used by all Legato APIs.
-    
+
 paths: {}
 components:
   schemas:
@@ -31,18 +31,18 @@ components:
         - modify
         - delete
         - noChange
-                
+
     ServiceRef:
       description: |-
         Reference to a Service instance.
       allOf:
-        - $ref: '../common/apiSchema.openapi.yaml#/components/schemas/Referenceable'
+        - $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/apiSchema.openapi.yaml?raw=true#/components/schemas/Referenceable'
         - type: object
           properties:
             '@type':
               type: string
-              default: 'Service'   
-           
+              default: 'Service'
+
     ServiceOrder:
       description: |-
         A Service Order is used to request operations on a Service instance.
@@ -78,12 +78,12 @@ components:
               description: Date when the order was completed
               type: string
               format: date-time
-    
+
     ServiceOrderCreate:
       description: |-
         This structure is used in the operation POST for a serviceOrder request
       allOf:
-        - $ref: '../common/apiSchema.openapi.yaml#/components/schemas/Addressable'
+        - $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/apiSchema.openapi.yaml?raw=true#/components/schemas/Addressable'
         - type: object
           properties:
             externalId:
@@ -100,14 +100,14 @@ components:
                 Used to categorize the order that can be useful for OM system
                 (e.g. “broadband”, “TVOption”, ...)'
               type: string
-            note: 
-              type: array 
+            note:
+              type: array
               items:
-                $ref: '../common/apiSchema.openapi.yaml#/components/schemas/Note'
+                $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/apiSchema.openapi.yaml?raw=true#/components/schemas/Note'
             notificationContact:
-              type: string 
+              type: string
               description: |-
-                Contact attached to the order to send back information 
+                Contact attached to the order to send back information
                 regarding this order
             priority:
               description: |-
@@ -128,7 +128,7 @@ components:
             relatedParty:
               type: array
               items:
-                $ref: '../common/apiSchema.openapi.yaml#/components/schemas/RelatedPartyRef'
+                $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/apiSchema.openapi.yaml?raw=true#/components/schemas/RelatedPartyRef'
             orderItem:
               type: array
               items:
@@ -138,18 +138,18 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/ServiceOrderRelationship'
-    
+
     ServiceOrderRef:
       description: |-
         Reference to a Service Order instance.
       allOf:
-        - $ref: '../common/apiSchema.openapi.yaml#/components/schemas/Referenceable'
+        - $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/apiSchema.openapi.yaml?raw=true#/components/schemas/Referenceable'
         - type: object
           properties:
             '@type':
               type: string
               default: 'ServiceOrder'
-                   
+
     ServiceOrderRelationship:
       description: |-
         Reference to an related Service Order and the type of association.
@@ -162,7 +162,7 @@ components:
           $ref: '#/components/schemas/OrderRelationshipType'
         serviceOrder:
            $ref: '#/components/schemas/ServiceOrderRef'
-           
+
     OrderRelationshipType:
       description: Relationship type.
       type: string
@@ -173,7 +173,7 @@ components:
 
     ServiceOrderStateType:
       description: |-
-        List of possible state for the Service Order. 
+        List of possible state for the Service Order.
         * ACKNOWLEDGED - Order has been received and has passed message
           validation.
         * IN_PROGRESS - Service Fulfillment has started.
@@ -209,13 +209,13 @@ components:
         - FAILED
         - PARTIAL
         - REJECTED
-        
+
     ServiceOrderItem:
       description: |-
         An identified part of the order. A service order is decomposed into one
         or more order items.
       allOf:
-        - $ref: '../common/apiSchema.openapi.yaml#/components/schemas/Extensible'
+        - $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/apiSchema.openapi.yaml?raw=true#/components/schemas/Extensible'
         - type: object
           required:
             - id
@@ -228,7 +228,7 @@ components:
             action:
               $ref: '#/components/schemas/ActionType'
             service:
-              $ref: '../inventory/serviceInventorySchema.openapi.yaml#/components/schemas/ServiceCreate'
+              $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/inventory/serviceInventorySchema.openapi.yaml?raw=true#/components/schemas/ServiceCreate'
             state:
               $ref: '#/components/schemas/ServiceOrderStateType'
             orderItemRelationship:
@@ -237,18 +237,18 @@ components:
                 $ref: '#/components/schemas/ServiceOrderItemRelationship'
               minItems: 0
               maxItems: 1
-    
+
     ServiceOrderItemRef:
       description: |-
         Reference to a Service Order Item instance.
       allOf:
-        - $ref: '../common/apiSchema.openapi.yaml#/components/schemas/Referenceable'
+        - $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/apiSchema.openapi.yaml?raw=true#/components/schemas/Referenceable'
         - type: object
           properties:
             '@type':
               type: string
-              default: 'ServiceOrderItem' 
-              
+              default: 'ServiceOrderItem'
+
     ServiceOrderItemRelationship:
       description: |-
         Reference to an related Service Order Item and the type of association.
@@ -269,11 +269,11 @@ components:
         - reliesOn
         - dependency
         - crossRef
-      
+
     ServiceOrderCreateNotification:
       description: "ServiceOrder create notification"
       allOf:
-        - $ref: '../common/hubSchema.openapi.yaml#/components/schemas/Notification'
+        - $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/hubSchema.openapi.yaml?raw=true#/components/schemas/Notification'
         - type: object
           properties:
             event:
@@ -282,7 +282,7 @@ components:
     ServiceOrderStateChangeNotification:
       description: "ServiceOrder State Change notification"
       allOf:
-        - $ref: '../common/hubSchema.openapi.yaml#/components/schemas/Notification'
+        - $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/hubSchema.openapi.yaml?raw=true#/components/schemas/Notification'
         - type: object
           properties:
             event:
@@ -291,22 +291,22 @@ components:
     ServiceOrderItemStateChangeNotification:
       description: "ServiceOrder State Change notification"
       allOf:
-        - $ref: '../common/hubSchema.openapi.yaml#/components/schemas/Notification'
+        - $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/hubSchema.openapi.yaml?raw=true#/components/schemas/Notification'
         - type: object
           properties:
             event:
               $ref: '#/components/schemas/ServiceOrderItemEvent'
 
     ServiceOrderEvent:
-      type: object 
-      description: The ServiceOrder event data structure 
-      properties: 
-          serviceOrder: 
+      type: object
+      description: The ServiceOrder event data structure
+      properties:
+          serviceOrder:
             $ref: "#/components/schemas/ServiceOrder"
 
     ServiceOrderItemEvent:
-      type: object 
-      description: The ServiceOrder event data structure 
-      properties: 
-          serviceOrder: 
+      type: object
+      description: The ServiceOrder event data structure
+      properties:
+          serviceOrder:
             $ref: "#/components/schemas/ServiceOrderItem"

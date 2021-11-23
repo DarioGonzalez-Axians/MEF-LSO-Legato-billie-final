@@ -3,8 +3,8 @@ info:
   title: Legato Service Specification Components
   version: 4.0.0-RC
   description: >+
-    This OAS document contains the schema defintions of Service Specification 
-    components that are reused/referenced by different Legato API 
+    This OAS document contains the schema defintions of Service Specification
+    components that are reused/referenced by different Legato API
     specifications. This includes common schemas, parameters, etc
 
     - MEF Developer Guide Reference : MEF_W99 v1.0
@@ -17,16 +17,16 @@ info:
 tags:
   - name: ServiceSpecificationSchema
     description: Service Specification components used by all Legato APIs.
-    
+
 paths: {}
 components:
-  schemas:               
+  schemas:
     AttachmentRef:
       description: |-
         An attachment represents a file that is used to complement the
         description of an entity through video, pictures, etc..
       allOf:
-        - $ref: '../common/apiSchema.openapi.yaml#/components/schemas/Referenceable'
+        - $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/apiSchema.openapi.yaml?raw=true#/components/schemas/Referenceable'
         - type: object
           properties:
             description:
@@ -40,11 +40,11 @@ components:
     ServiceLevelSpecificationRef:
       description: |-
         A Service Level Specification represents a pre-defined or negotiated set
-        of Service Level Objectives. In addition, certain consequences are 
-        associated with not meeting the Service Level Objectives. Service Level 
+        of Service Level Objectives. In addition, certain consequences are
+        associated with not meeting the Service Level Objectives. Service Level
         Agreements are expressed in terms of Service Level Specifications.
       allOf:
-          - $ref: '../common/apiSchema.openapi.yaml#/components/schemas/Referenceable'
+          - $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/apiSchema.openapi.yaml?raw=true#/components/schemas/Referenceable'
 
     ServiceSpecification:
       description: |-
@@ -53,7 +53,7 @@ components:
         which Services may be instantiated. By sharing the same specification,
         these services would therefore share the same set of characteristics.
       allOf:
-        - $ref: '../common/apiSchema.openapi.yaml#/components/schemas/Addressable'
+        - $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/apiSchema.openapi.yaml?raw=true#/components/schemas/Addressable'
         - type: object
           properties:
             category:
@@ -66,7 +66,7 @@ components:
               description: |-
                 Categories can be further sub-categorized into other categories.
               type: string
-            version: 
+            version:
               type: string
               description: Service specification version
             description":
@@ -74,19 +74,19 @@ components:
               description: |-
                 A narrative that explains  details of the service specification.
             isBundle:
-              type: boolean 
+              type: boolean
               description: |-
-                Determines whether a ServiceSpecification represents a single 
-                ServiceSpecification (false), or a bundle of 
+                Determines whether a ServiceSpecification represents a single
+                ServiceSpecification (false), or a bundle of
                 ServiceSpecification (true).
             lastUpdate:
               type: string
-              format: date-time 
+              format: date-time
               description: |-
                 Date and time of the last update of the service specification
-            validFor: 
-              allOf: 
-                - $ref: '../common/apiSchema.openapi.yaml#/components/schemas/TimePeriod'
+            validFor:
+              allOf:
+                - $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/apiSchema.openapi.yaml?raw=true#/components/schemas/TimePeriod'
               description: |-
                 The period for which the service specification is valid
             lifecycleStatus:
@@ -98,12 +98,12 @@ components:
               minItems: 0
               maxItems: 1
               description: |-
-                A list of attachments (Attachment [*]). Complements 
+                A list of attachments (Attachment [*]). Complements
                 the description of the specification through video, pictures...
             relatedParty:
               type: array
               items:
-                $ref: '../common/apiSchema.openapi.yaml#/components/schemas/RelatedPartyRef'
+                $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/apiSchema.openapi.yaml?raw=true#/components/schemas/RelatedPartyRef'
               minItems: 0
             serviceLevelSpecification:
               type: array
@@ -124,13 +124,13 @@ components:
               description: |-
                 A list of service spec characteristics (ServiceSpecCharacteristic [*]). This class represents the key features of this service specification.
             targetServiceSchema:
-              $ref: "#/components/schemas/TargetServiceSchema" 
+              $ref: "#/components/schemas/TargetServiceSchema"
 
     ServiceSpecificationRef:
       description: |-
         Reference to a ServiceSpecification instance.
       allOf:
-        - $ref: '../common/apiSchema.openapi.yaml#/components/schemas/Referenceable'
+        - $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/apiSchema.openapi.yaml?raw=true#/components/schemas/Referenceable'
         - type: object
           properties:
             version:
@@ -143,7 +143,7 @@ components:
       description: |-
         Reference to a ServiceSpecification instance.
       allOf:
-        - $ref: '../common/apiSchema.openapi.yaml#/components/schemas/Referenceable'
+        - $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/apiSchema.openapi.yaml?raw=true#/components/schemas/Referenceable'
         - type: object
           properties:
             relationshipType:
@@ -153,13 +153,13 @@ components:
               type: string
             validFor:
               allOf:
-                - $ref: '../common/apiSchema.openapi.yaml#/components/schemas/TimePeriod'
+                - $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/apiSchema.openapi.yaml?raw=true#/components/schemas/TimePeriod'
 
     ServiceSpecificationState:
       description: |-
-        List of possible states that represents the entire Service 
-        Specification lifecycle. This includes all the processes required to 
-        design, build, deploy, maintain and ultimately retire the catalog 
+        List of possible states that represents the entire Service
+        Specification lifecycle. This includes all the processes required to
+        design, build, deploy, maintain and ultimately retire the catalog
         element.
       type: string
       enum:
@@ -181,23 +181,23 @@ components:
         - migration
         - substitution
         - exclusivity
-    
+
     ServiceSpecCharacteristic:
       description: |-
-        This class represents the key features of this service specification. 
+        This class represents the key features of this service specification.
         For example, bandwidth is a characteristic of many different types of
         services; if bandwidth is a relevant characteristic (e.g., from the
         point-of-view of a Customer obtaining this Service via a Product) then
         bandwidth would be a ServiceSpecCharacteristic for that particular
         Service.
       allOf:
-        - $ref: '../common/apiSchema.openapi.yaml#/components/schemas/Addressable'
+        - $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/apiSchema.openapi.yaml?raw=true#/components/schemas/Addressable'
         - type: object
           properties:
             '@valueSchemaLocation':
               type: string
               description: |-
-                This (optional) field provides a link to the schema describing 
+                This (optional) field provides a link to the schema describing
                 the value type.
             valueType:
               type: string
@@ -211,8 +211,8 @@ components:
             extensible:
               type: boolean
               description: |-
-                An indicator that specifies that the values for the 
-                characteristic can be extended by adding new values when 
+                An indicator that specifies that the values for the
+                characteristic can be extended by adding new values when
                 instantiating a characteristic for an Entity.
             isUnique:
               type: boolean
@@ -232,8 +232,8 @@ components:
               description: |-
                 A rule or principle represented in regular expression used to derive the value of a characteristic value.
             validFor:
-              allOf: 
-                - $ref: '../common/apiSchema.openapi.yaml#/components/schemas/TimePeriod'
+              allOf:
+                - $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/apiSchema.openapi.yaml?raw=true#/components/schemas/TimePeriod'
               description: |-
                 The period for which the serviceSpecCharacteristic is valid
             serviceSpecCharRelationship:
@@ -247,12 +247,12 @@ components:
               items:
                 $ref: '#/components/schemas/ServiceSpecCharacteristicValue'
               description: |-
-                A list of service spec characteristic values. A 
-                ServiceSpecCharacteristicValue object is used to define a set 
-                of attributes, each of which can be assigned to a corresponding 
-                set of attributes in a ServiceSpecCharacteristic object. The 
-                values of the attributes in the ServiceSpecCharacteristicValue 
-                object describe the values of the attributes that a 
+                A list of service spec characteristic values. A
+                ServiceSpecCharacteristicValue object is used to define a set
+                of attributes, each of which can be assigned to a corresponding
+                set of attributes in a ServiceSpecCharacteristic object. The
+                values of the attributes in the ServiceSpecCharacteristicValue
+                object describe the values of the attributes that a
                 corresponding ServiceSpecCharacteristic object can take on.
 
     ServiceSpecCharacteristicValue:
@@ -264,7 +264,7 @@ components:
         values of the attributes that a corresponding ServiceSpecCharacteristic
         object can take on.
       allOf:
-        - $ref: '../common/apiSchema.openapi.yaml#/components/schemas/Addressable'
+        - $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/apiSchema.openapi.yaml?raw=true#/components/schemas/Addressable'
         - type: object
           properties:
             isDefault:
@@ -274,7 +274,7 @@ components:
               type: string
               description: |-
                 An indicator that specifies the inclusion or exclusion of the
-                valueFrom and valueTo attributes. If applicable, possible 
+                valueFrom and valueTo attributes. If applicable, possible
                 values are "open", "closed", "closedBottom" and "closedTop".
             regex:
               type: string
@@ -282,10 +282,10 @@ components:
             unitOfMeasure:
               type: string
               description: |-
-                A length, surface, volume, dry measure, liquid measure, money, 
-                weight, time, and the like. In general, a determinate quantity 
-                or magnitude of the kind designated, taken as a standard of 
-                comparison for others of the same kind, in assigning to them 
+                A length, surface, volume, dry measure, liquid measure, money,
+                weight, time, and the like. In general, a determinate quantity
+                or magnitude of the kind designated, taken as a standard of
+                comparison for others of the same kind, in assigning to them
                 numerical values, as 1 foot, 1 yard, 1 mile, 1 square foot.
             valueFrom:
               type: integer
@@ -299,8 +299,8 @@ components:
               description: |-
                 A kind of value that the characteristic can take on, such as numeric,  text, and so forth
             validFor:
-              allOf: 
-                - $ref: '../common/apiSchema.openapi.yaml#/components/schemas/TimePeriod'
+              allOf:
+                - $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/apiSchema.openapi.yaml?raw=true#/components/schemas/TimePeriod'
               description: The period of time for which a value is applicable
             value:
               description: |-
@@ -313,12 +313,12 @@ components:
       description: |-
         The reference to the schema and type of target service which is described by service specification
       allOf:
-        - $ref: '../common/apiSchema.openapi.yaml#/components/schemas/Extensible'
+        - $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/apiSchema.openapi.yaml?raw=true#/components/schemas/Extensible'
 
     ServiceSpecificationCreateNotification:
       description: "ServiceSpecification create notification"
       allOf:
-        - $ref: '../common/hubSchema.openapi.yaml#/components/schemas/Notification'
+        - $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/hubSchema.openapi.yaml?raw=true#/components/schemas/Notification'
         - type: object
           properties:
             event:
@@ -327,7 +327,7 @@ components:
     ServiceSpecificationDeleteNotification:
       description: "ServiceSpecification delete notification"
       allOf:
-        - $ref: '../common/hubSchema.openapi.yaml#/components/schemas/Notification'
+        - $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/hubSchema.openapi.yaml?raw=true#/components/schemas/Notification'
         - type: object
           properties:
             event:
@@ -336,15 +336,15 @@ components:
     ServiceSpecificationChangeNotification:
       description: "ServiceSpecification Change notification"
       allOf:
-        - $ref: '../common/hubSchema.openapi.yaml#/components/schemas/Notification'
+        - $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/hubSchema.openapi.yaml?raw=true#/components/schemas/Notification'
         - type: object
           properties:
             event:
               $ref: '#/components/schemas/ServiceSpecificationEvent'
 
     ServiceSpecificationEvent:
-      type: object 
-      description: The ServiceSpecification event data structure 
-      properties: 
-          serviceSpecification: 
+      type: object
+      description: The ServiceSpecification event data structure
+      properties:
+          serviceSpecification:
             $ref: "#/components/schemas/ServiceSpecification"

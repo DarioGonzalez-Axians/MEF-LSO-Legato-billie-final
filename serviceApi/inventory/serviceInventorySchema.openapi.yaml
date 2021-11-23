@@ -16,7 +16,7 @@ info:
 tags:
   - name: ServiceInventorySchema
     description: Service Inventory components used by all Legato APIs.
-    
+
 paths: {}
 components:
   schemas:
@@ -24,96 +24,96 @@ components:
       description: |-
         Describes the characteristic of an MEF Service schema object.
       allOf:
-        - $ref: '../common/apiSchema.openapi.yaml#/components/schemas/Extensible'
+        - $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/apiSchema.openapi.yaml?raw=true#/components/schemas/Extensible'
 
     Service:
       description: |-
-        The Service instance managed by SOF and retrievable by an BA over the 
+        The Service instance managed by SOF and retrievable by an BA over the
         Legato IRP via the Service Invertory API.
       allOf:
         - $ref: '#/components/schemas/ServiceCreate'
         - type: object
           properties:
-            endDate: 
-              type: "string" 
-              format: "date-time" 
+            endDate:
+              type: "string"
+              format: "date-time"
               description: |
                 Date when the service ends
             hasStarted:
-              type: "boolean" 
+              type: "boolean"
               description: |-
-                If TRUE, this Service has already been started   
-            isServiceEnabled: 
-              type: "boolean" 
+                If TRUE, this Service has already been started
+            isServiceEnabled:
+              type: "boolean"
               description: |-
-                If FALSE, this particular Service has NOT been enabled for use 
-            isStateful: 
-              type: "boolean" 
+                If FALSE, this particular Service has NOT been enabled for use
+            isStateful:
+              type: "boolean"
               description: |-
                 If TRUE, this Service can be changed without affecting any
                 other services
-            serviceDate: 
+            serviceDate:
               type: string
               description: |-
                 Date when the service was created (whatever its status).
             serviceOrder:
-              type: array 
+              type: array
               items:
-                $ref: '../order/serviceOrderingSchema.openapi.yaml#/components/schemas/ServiceOrderRef'
-            startDate: 
-              type: string 
-              format: date-time 
+                $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/order/serviceOrderingSchema.openapi.yaml?raw=true#/components/schemas/ServiceOrderRef'
+            startDate:
+              type: string
+              format: date-time
               description: |-
                 Date when the service starts
-            startMode: 
-              type: string 
+            startMode:
+              type: string
               description: |-
-                This attribute is an enumerated integer that indicates how the 
-                Service is started, such as: 0: Unknown; 1: Automatically by 
-                the managed environment; 2: Automatically by the owning device; 
-                3: Manually by the Provider of the Service; 4: Manually by a 
-                Customer of the Provider; 5: Any of the above 
+                This attribute is an enumerated integer that indicates how the
+                Service is started, such as: 0: Unknown; 1: Automatically by
+                the managed environment; 2: Automatically by the owning device;
+                3: Manually by the Provider of the Service; 4: Manually by a
+                Customer of the Provider; 5: Any of the above
 
     ServiceCreate:
       description: |-
         In the context of a service order, and depending of the action requested (add/modify/delete/noChange) this data structure captures the configuration to apply to an existing subscribed service or to a new one
       allOf:
-        - $ref: '../common/apiSchema.openapi.yaml#/components/schemas/Extensible'
+        - $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/apiSchema.openapi.yaml?raw=true#/components/schemas/Extensible'
         - type: object
           properties:
-            category: 
-              type: string 
+            category:
+              type: string
               description: |-
                 Is it a customer facing or resource facing service
-            description: 
-              type: string 
+            description:
+              type: string
               description: |-
                 Free-text description of the service
             mefServiceConfiguration:
               $ref: '#/components/schemas/MefServiceConfiguration'
               description: MEF Service payload
-            note: 
-              type: array 
-              items:
-                $ref: '../common/apiSchema.openapi.yaml#/components/schemas/Note'
-            place: 
+            note:
               type: array
-              items: 
-                $ref: '../common/apiSchema.openapi.yaml#/components/schemas/Place'
+              items:
+                $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/apiSchema.openapi.yaml?raw=true#/components/schemas/Note'
+            place:
+              type: array
+              items:
+                $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/apiSchema.openapi.yaml?raw=true#/components/schemas/Place'
             relatedParty:
               type: array
               items:
-                $ref: '../common/apiSchema.openapi.yaml#/components/schemas/RelatedPartyRef'
+                $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/apiSchema.openapi.yaml?raw=true#/components/schemas/RelatedPartyRef'
             serviceRelationship:
               type: array
               items:
                 $ref: '#/components/schemas/ServiceRelationship'
             serviceSpecification:
-              $ref: '../catalog/serviceCatalogSchema.openapi.yaml#/components/schemas/ServiceSpecificationRef'
-            serviceType: 
-              type: string 
+              $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/catalog/serviceCatalogSchema.openapi.yaml?raw=true#/components/schemas/ServiceSpecificationRef'
+            serviceType:
+              type: string
               description: |-
-                Business type of the service 
+                Business type of the service
             state:
               $ref: '#/components/schemas/ServiceStateType'
             supportingResource:
@@ -121,26 +121,26 @@ components:
               readOnly: true
               items:
                 $ref: '#/components/schemas/ResourceRef'
-            supportingService: 
+            supportingService:
               type: array
               items:
                 $ref: '#/components/schemas/ServiceRef'
               description: |-
-                A list of supporting services (SupportingService [*]). A 
-                collection of services that support this service (bundling, 
+                A list of supporting services (SupportingService [*]). A
+                collection of services that support this service (bundling,
                 link CFS to RFS).
-    
+
     ServiceRef:
       description: |-
         Reference to a Service instance.
       allOf:
-        - $ref: '../common/apiSchema.openapi.yaml#/components/schemas/Referenceable'
+        - $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/apiSchema.openapi.yaml?raw=true#/components/schemas/Referenceable'
         - type: object
           properties:
             '@type':
               type: string
               default: 'Service'
-              
+
     ServiceRelationship:
       description: |-
         Reference to an related Service and the type of association.
@@ -153,7 +153,7 @@ components:
           $ref: '#/components/schemas/ServiceRelationshipType'
         service:
           $ref: '#/components/schemas/ServiceRef'
-           
+
     ServiceRelationshipType:
       description: Relationship type.
       type: string
@@ -178,7 +178,7 @@ components:
       description: |-
         Provides reference to the Resource supporting the Service instance.
       allOf:
-        - $ref: '../common/apiSchema.openapi.yaml#/components/schemas/Referenceable'
+        - $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/apiSchema.openapi.yaml?raw=true#/components/schemas/Referenceable'
         - type: object
           properties:
             '@type':
@@ -188,7 +188,7 @@ components:
     ServiceCreateNotification:
       description: "Service create notification"
       allOf:
-        - $ref: '../common/hubSchema.openapi.yaml#/components/schemas/Notification'
+        - $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/hubSchema.openapi.yaml?raw=true#/components/schemas/Notification'
         - type: object
           properties:
             event:
@@ -197,7 +197,7 @@ components:
     ServiceDeleteNotification:
       description: "Service create notification"
       allOf:
-        - $ref: '../common/hubSchema.openapi.yaml#/components/schemas/Notification'
+        - $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/hubSchema.openapi.yaml?raw=true#/components/schemas/Notification'
         - type: object
           properties:
             event:
@@ -206,15 +206,15 @@ components:
     ServiceStateChangeNotification:
       description: "Service State Change notification"
       allOf:
-        - $ref: '../common/hubSchema.openapi.yaml#/components/schemas/Notification'
+        - $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/hubSchema.openapi.yaml?raw=true#/components/schemas/Notification'
         - type: object
           properties:
             event:
               $ref: '#/components/schemas/ServiceEvent'
 
     ServiceEvent:
-      type: object 
-      description: The Service event data structure 
-      properties: 
-        service: 
+      type: object
+      description: The Service event data structure
+      properties:
+        service:
           $ref: "#/components/schemas/Service"

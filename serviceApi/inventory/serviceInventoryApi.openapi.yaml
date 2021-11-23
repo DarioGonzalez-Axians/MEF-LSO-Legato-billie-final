@@ -3,14 +3,14 @@ info:
   title: Legato Service Inventory API
   version: 4.0.0-RC
   description: |-
-    The Service Inventory API provides a standardized mechanism for retrieving 
-    *ServiceInstances*. Using these APIs Business Applications (BUS) systems 
-    query the **Service Inventory** system for *ServiceInstances* that were 
-    created by the **Service Order Management** system in the Service 
+    The Service Inventory API provides a standardized mechanism for retrieving
+    *ServiceInstances*. Using these APIs Business Applications (BUS) systems
+    query the **Service Inventory** system for *ServiceInstances* that were
+    created by the **Service Order Management** system in the Service
     Orchestration Function (SOF).
 
-    Additionally, the APIs also allow the BUS to register listeners to be 
-    notified of the changes to the *ServiceInstances*.  
+    Additionally, the APIs also allow the BUS to register listeners to be
+    notified of the changes to the *ServiceInstances*.
 
     - MEF Developer Guide Reference : MEF_W99 v1.0
 
@@ -30,7 +30,7 @@ servers:
   - url: https://{server}:{port}{basePath}
     variables:
       server:
-        default: 'mef.net' 
+        default: 'mef.net'
       port:
         enum:
           - '8443'
@@ -47,8 +47,8 @@ paths:
       operationId: serviceFind
       summary: List services
       description: >-
-        This operation list service entities. 
-        Attribute selection is restricted. 
+        This operation list service entities.
+        Attribute selection is restricted.
         fields attribute may be used to filter retrieved attribute(s) for each
         service
       deprecated: false
@@ -74,8 +74,8 @@ paths:
         - name: fields
           required: false
           in: query
-          description: |- 
-            Comma-separated properties of the Service instance to be included 
+          description: |-
+            Comma-separated properties of the Service instance to be included
             in the returned response
           schema:
             type: string
@@ -83,15 +83,15 @@ paths:
           required: false
           in: query
           description: |-
-            Requested start index in a ordered list (sorted by id property) of 
-            matching Service instances to be provided in response. 
+            Requested start index in a ordered list (sorted by id property) of
+            matching Service instances to be provided in response.
           schema:
             type: integer
         - name: limit
           required: false
           in: query
           description: |-
-            Requested maximum number of Service instances to be provided 
+            Requested maximum number of Service instances to be provided
             in the response
           schema:
             type: integer
@@ -112,25 +112,25 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'serviceInventorySchema.openapi.yaml#/components/schemas/Service'
+                  $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/inventory/serviceInventorySchema.openapi.yaml?raw=true#/components/schemas/Service'
         '400':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/BadRequest'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/BadRequest'
         '401':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/Unauthorized'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/Unauthorized'
         '403':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/Forbidden'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/Forbidden'
         '404':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/NotFound'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/NotFound'
         '405':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/MethodNotAllowed'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/MethodNotAllowed'
         '408':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/RequestTimeout'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/RequestTimeout'
         '422':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/UnprocessableEntity'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/UnprocessableEntity'
         '500':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/InternalServerError'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/InternalServerError'
         '503':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/ServiceUnavailable'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/ServiceUnavailable'
 
   '/service/{id}':
     get:
@@ -139,7 +139,7 @@ paths:
       operationId: serviceGet
       summary: Retrieve a service
       description: |-
-        This operation retrieves a service entity. 
+        This operation retrieves a service entity.
         Attribute selection is enabled for all first level attributes.
       deprecated: false
       parameters:
@@ -152,8 +152,8 @@ paths:
         - name: fields
           required: false
           in: query
-          description: |- 
-            Comma-separated properties of the Service instance to be included 
+          description: |-
+            Comma-separated properties of the Service instance to be included
             in the returned response
           schema:
             type: string
@@ -163,21 +163,21 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: 'serviceInventorySchema.openapi.yaml#/components/schemas/Service'
+                $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/inventory/serviceInventorySchema.openapi.yaml?raw=true#/components/schemas/Service'
         '400':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/BadRequest'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/BadRequest'
         '401':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/Unauthorized'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/Unauthorized'
         '403':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/Forbidden'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/Forbidden'
         '404':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/NotFound'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/NotFound'
         '422':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/UnprocessableEntity'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/UnprocessableEntity'
         '500':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/InternalServerError'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/InternalServerError'
         '503':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/ServiceUnavailable'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/ServiceUnavailable'
 
   /hub:
     post:
@@ -191,7 +191,7 @@ paths:
         content:
           application/json;charset=utf-8:
             schema:
-              $ref: '../common/hubSchema.openapi.yaml#/components/schemas/EventSubscriptionInput'
+              $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/hubSchema.openapi.yaml?raw=true#/components/schemas/EventSubscriptionInput'
         required: true
       responses:
         '201':
@@ -199,25 +199,25 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '../common/hubSchema.openapi.yaml#/components/schemas/EventSubscription'
+                $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/hubSchema.openapi.yaml?raw=true#/components/schemas/EventSubscription'
         '400':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/BadRequest'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/BadRequest'
         '401':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/Unauthorized'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/Unauthorized'
         '403':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/Forbidden'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/Forbidden'
         '404':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/NotFound'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/NotFound'
         '405':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/MethodNotAllowed'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/MethodNotAllowed'
         '408':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/RequestTimeout'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/RequestTimeout'
         '409':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/Conflict'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/Conflict'
         '500':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/InternalServerError'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/InternalServerError'
         '503':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/ServiceUnavailable'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/ServiceUnavailable'
 
   '/hub/{hubId}':
     get:
@@ -239,25 +239,25 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '../common/hubSchema.openapi.yaml#/components/schemas/EventSubscription'
+                $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/hubSchema.openapi.yaml?raw=true#/components/schemas/EventSubscription'
         '400':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/BadRequest'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/BadRequest'
         '401':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/Unauthorized'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/Unauthorized'
         '403':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/Forbidden'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/Forbidden'
         '404':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/NotFound'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/NotFound'
         '405':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/MethodNotAllowed'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/MethodNotAllowed'
         '408':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/RequestTimeout'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/RequestTimeout'
         '422':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/UnprocessableEntity'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/UnprocessableEntity'
         '500':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/InternalServerError'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/InternalServerError'
         '503':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/ServiceUnavailable'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/ServiceUnavailable'
 
     delete:
       tags:
@@ -276,20 +276,20 @@ paths:
         '204':
           description: No Content
         '400':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/BadRequest'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/BadRequest'
         '401':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/Unauthorized'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/Unauthorized'
         '403':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/Forbidden'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/Forbidden'
         '404':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/NotFound'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/NotFound'
         '405':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/MethodNotAllowed'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/MethodNotAllowed'
         '408':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/RequestTimeout'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/RequestTimeout'
         '422':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/UnprocessableEntity'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/UnprocessableEntity'
         '500':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/InternalServerError'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/InternalServerError'
         '503':
-          $ref: '../common/errorSchema.openapi.yaml#/components/responses/ServiceUnavailable'
+          $ref: 'https://github.com/DarioGonzalez-Axians/MEF-LSO-Legato-billie-final/blob/billie-final/serviceApi/common/errorSchema.openapi.yaml?raw=true#/components/responses/ServiceUnavailable'
